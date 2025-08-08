@@ -1,0 +1,64 @@
+INFO 2025-08-07 04:46:09,152 autoreload 20280 17836 Watching for file changes with StatReloader
+INFO 2025-08-07 04:46:26,258 autoreload 20280 17836 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:46:27,327 autoreload 1668 20284 Watching for file changes with StatReloader
+INFO 2025-08-07 04:46:40,065 autoreload 1668 20284 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:46:40,817 autoreload 19588 14608 Watching for file changes with StatReloader
+INFO 2025-08-07 04:46:54,656 autoreload 19588 14608 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:46:55,669 autoreload 15424 15396 Watching for file changes with StatReloader
+INFO 2025-08-07 04:47:47,835 autoreload 16864 11900 Watching for file changes with StatReloader
+INFO 2025-08-07 04:49:22,222 basehttp 16864 16116 "OPTIONS /api/login/ HTTP/1.1" 200 0
+WARNING 2025-08-07 04:49:22,252 log 16864 16116 Unauthorized: /api/login/
+WARNING 2025-08-07 04:49:22,252 basehttp 16864 16116 "POST /api/login/ HTTP/1.1" 401 207
+INFO 2025-08-07 04:49:22,262 basehttp 16864 16116 "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+WARNING 2025-08-07 04:49:22,278 log 16864 16116 Not Found: /api/token/refresh/
+WARNING 2025-08-07 04:49:22,278 basehttp 16864 16116 "POST /api/token/refresh/ HTTP/1.1" 404 5288
+INFO 2025-08-07 04:49:43,756 autoreload 16864 11900 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:49:44,598 autoreload 8064 20048 Watching for file changes with StatReloader
+INFO 2025-08-07 04:49:51,940 autoreload 8064 20048 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:49:52,744 autoreload 9172 2452 Watching for file changes with StatReloader
+INFO 2025-08-07 04:49:58,879 autoreload 9172 2452 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:49:59,780 autoreload 6268 2188 Watching for file changes with StatReloader
+INFO 2025-08-07 04:50:07,062 autoreload 6268 2188 C:\Users\FATIH\Desktop\safak\safak_backend\users\views.py changed, reloading.
+INFO 2025-08-07 04:50:07,899 autoreload 17724 15148 Watching for file changes with StatReloader
+INFO 2025-08-07 04:50:21,686 autoreload 17724 15148 C:\Users\FATIH\Desktop\safak\safak_backend\safak_backend\urls.py changed, reloading.
+INFO 2025-08-07 04:50:22,528 autoreload 20012 7556 Watching for file changes with StatReloader
+INFO 2025-08-07 04:50:30,861 autoreload 20012 7556 C:\Users\FATIH\Desktop\safak\safak_backend\safak_backend\urls.py changed, reloading.
+INFO 2025-08-07 04:50:31,712 autoreload 20192 8540 Watching for file changes with StatReloader
+INFO 2025-08-07 04:51:01,410 basehttp 20192 14428 "POST /api/login/ HTTP/1.1" 200 741
+INFO 2025-08-07 04:51:13,608 autoreload 20192 8540 C:\Users\FATIH\Desktop\safak\safak_backend\safak_backend\settings.py changed, reloading.
+INFO 2025-08-07 04:51:14,553 autoreload 18756 6152 Watching for file changes with StatReloader
+INFO 2025-08-07 04:52:08,868 basehttp 18756 17300 "POST /api/login/ HTTP/1.1" 200 741
+INFO 2025-08-07 04:54:16,013 basehttp 18756 17300 "POST /api/login/ HTTP/1.1" 200 741
+INFO 2025-08-07 04:54:18,402 basehttp 18756 17300 "OPTIONS /api/opportunities/ HTTP/1.1" 200 0
+INFO 2025-08-07 04:54:18,427 basehttp 18756 17300 "GET /api/opportunities/ HTTP/1.1" 200 433
+INFO 2025-08-07 04:54:18,826 basehttp 18756 17836 "GET /media/opportunity_products/gomlek-yaka-selanik-orgulu-erkek-triko-38-4cd.jpg HTTP/1.1" 200 259818
+WARNING 2025-08-07 04:55:25,453 log 18756 17300 Not Found: /api/
+WARNING 2025-08-07 04:55:25,454 basehttp 18756 17300 "GET /api/ HTTP/1.1" 404 5607
+WARNING 2025-08-07 04:55:38,525 log 18756 17836 Not Found: /api/student
+WARNING 2025-08-07 04:55:38,526 basehttp 18756 17836 "GET /api/student HTTP/1.1" 404 5628
+WARNING 2025-08-07 04:55:42,479 log 18756 17836 Not Found: /api/
+WARNING 2025-08-07 04:55:42,480 basehttp 18756 17836 "GET /api/ HTTP/1.1" 404 5607
+WARNING 2025-08-07 04:55:45,330 log 18756 17836 Not Found: /api
+WARNING 2025-08-07 04:55:45,331 basehttp 18756 17836 "GET /api HTTP/1.1" 404 3030
+WARNING 2025-08-07 05:02:06,615 log 18756 516 Not Found: /api/
+WARNING 2025-08-07 05:02:06,616 basehttp 18756 516 "GET /api/ HTTP/1.1" 404 5607
+WARNING 2025-08-07 05:02:14,754 log 18756 516 Not Found: /api/
+WARNING 2025-08-07 05:02:14,755 basehttp 18756 516 "GET /api/ HTTP/1.1" 404 5607
+INFO 2025-08-07 16:27:16,371 basehttp 18756 15444 "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-08-07 16:27:17,383 basehttp 18756 15444 "POST /api/login/ HTTP/1.1" 200 741
+WARNING 2025-08-07 16:37:38,925 log 18756 10184 Not Found: /api/
+WARNING 2025-08-07 16:37:38,926 basehttp 18756 10184 "GET /api/ HTTP/1.1" 404 5607
+WARNING 2025-08-07 16:37:39,941 log 18756 10184 Not Found: /api/
+WARNING 2025-08-07 16:37:39,942 basehttp 18756 10184 "GET /api/ HTTP/1.1" 404 5607
+INFO 2025-08-07 16:37:50,740 autoreload 3608 16596 Watching for file changes with StatReloader
+INFO 2025-08-08 03:29:36,811 autoreload 12688 18904 Watching for file changes with StatReloader
+INFO 2025-08-08 03:33:18,545 basehttp 12688 5408 "OPTIONS /api/register/ HTTP/1.1" 200 0
+INFO 2025-08-08 03:33:19,361 basehttp 12688 5408 "POST /api/register/ HTTP/1.1" 201 760
+INFO 2025-08-08 03:33:55,820 basehttp 12688 5408 "POST /api/register/ HTTP/1.1" 201 874
+INFO 2025-08-08 03:34:17,582 basehttp 12688 5408 "OPTIONS /api/opportunities/ HTTP/1.1" 200 0
+INFO 2025-08-08 03:34:17,598 basehttp 12688 5408 "GET /api/opportunities/ HTTP/1.1" 200 433
+INFO 2025-08-08 03:34:17,975 basehttp 12688 3080 "GET /media/opportunity_products/gomlek-yaka-selanik-orgulu-erkek-triko-38-4cd.jpg HTTP/1.1" 200 259818
+INFO 2025-08-08 03:42:53,510 basehttp 12688 16728 "GET /api/opportunities/ HTTP/1.1" 200 433
+INFO 2025-08-08 03:45:31,978 basehttp 12688 16728 "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-08-08 03:45:33,061 basehttp 12688 16728 "POST /api/login/ HTTP/1.1" 200 741
+INFO 2025-08-08 03:45:38,483 basehttp 12688 16728 "GET /api/opportunities/ HTTP/1.1" 200 433
