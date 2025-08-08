@@ -125,10 +125,33 @@ WSGI_APPLICATION = 'safak_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'safak',
+        'USER': 'k12_db_admin',
+        'PASSWORD': 'k12123.',
+        'HOST': '128.140.78.85',
+        'PORT': '5432',
+        'ATOMIC_REQUESTS': False,
+        'CONN_MAX_AGE': 600,
+        'CONN_HEALTH_CHECKS': True,
+        'AUTOCOMMIT': True,
+        'OPTIONS': {
+            'connect_timeout': 10,
+            'keepalives': 1,
+            'keepalives_idle': 30,
+            'keepalives_interval': 10,
+            'keepalives_count': 5,
+        },
+        'TEST': {
+            'CHARSET': None,
+            'COLLATION': None,
+            'MIGRATE': True,
+            'MIRROR': None,
+            'NAME': None,
+        },
     }
 }
 

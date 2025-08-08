@@ -62,3 +62,11 @@ INFO 2025-08-08 03:42:53,510 basehttp 12688 16728 "GET /api/opportunities/ HTTP/
 INFO 2025-08-08 03:45:31,978 basehttp 12688 16728 "OPTIONS /api/login/ HTTP/1.1" 200 0
 INFO 2025-08-08 03:45:33,061 basehttp 12688 16728 "POST /api/login/ HTTP/1.1" 200 741
 INFO 2025-08-08 03:45:38,483 basehttp 12688 16728 "GET /api/opportunities/ HTTP/1.1" 200 433
+INFO 2025-08-09 00:50:05,283 autoreload 6916 20180 Watching for file changes with StatReloader
+INFO 2025-08-09 00:56:12,115 autoreload 22996 13384 Watching for file changes with StatReloader
+INFO 2025-08-09 01:04:45,893 basehttp 22996 18088 "POST /api/register/ HTTP/1.1" 201 879
+INFO 2025-08-09 01:29:07,948 autoreload 22996 13384 C:\Users\FATIH\Desktop\safak\safak_backend\safak_backend\settings.py changed, reloading.
+INFO 2025-08-09 01:29:08,663 autoreload 6536 18644 Watching for file changes with StatReloader
+INFO 2025-08-09 01:31:39,691 autoreload 4472 24160 Watching for file changes with StatReloader
+INFO 2025-08-09 01:36:51,533 autoreload 1108 12016 Watching for file changes with StatReloader
+INFO 2025-08-09 01:39:06,538 autoreload 15636 13456 Watching for file changes with StatReloader
