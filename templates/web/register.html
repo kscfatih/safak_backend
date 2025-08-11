@@ -1,0 +1,246 @@
+{% extends 'web/base.html' %}
+
+{% block title %}Kayıt Ol - Safak{% endblock %}
+
+{% block header_title %}✨ Kayıt Ol{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Hoş Geldin Kartı -->
+    <div class="card text-center" style="background: linear-gradient(135deg, var(--primary-red), var(--secondary-red)); color: var(--white);">
+        <div style="font-size: 48px; margin-bottom: 16px;">🎉</div>
+        <h1 style="color: var(--white); margin-bottom: 8px;">Safak Ailesine Katıl</h1>
+        <p style="color: rgba(255,255,255,0.9);">Ücretsiz kayıt ol, indirim kuponunu hemen al!</p>
+    </div>
+
+    <!-- Kayıt Formu -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Kayıt Ol</h2>
+            <p class="card-subtitle">Bilgilerinizi girin</p>
+        </div>
+
+        <form method="post" class="form" id="registerForm">
+            {% csrf_token %}
+            
+            <!-- Kişisel Bilgiler -->
+            <div class="form-group">
+                <label for="first_name" class="form-label">👤 Ad</label>
+                <input 
+                    type="text" 
+                    id="first_name" 
+                    name="first_name" 
+                    class="form-input" 
+                    placeholder="Adınız"
+                    required
+                    maxlength="30"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="last_name" class="form-label">👤 Soyad</label>
+                <input 
+                    type="text" 
+                    id="last_name" 
+                    name="last_name" 
+                    class="form-input" 
+                    placeholder="Soyadınız"
+                    required
+                    maxlength="30"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number" class="form-label">📱 Telefon Numarası</label>
+                <input 
+                    type="tel" 
+                    id="phone_number" 
+                    name="phone_number" 
+                    class="form-input" 
+                    placeholder="5XXXXXXXXX"
+                    required
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                >
+            </div>
+
+            <!-- Şifre -->
+            <div class="form-group">
+                <label for="password" class="form-label">🔒 Şifre</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-input" 
+                    placeholder="En az 8 karakter"
+                    required
+                    minlength="8"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirm" class="form-label">🔒 Şifre Tekrar</label>
+                <input 
+                    type="password" 
+                    id="password_confirm" 
+                    name="password_confirm" 
+                    class="form-input" 
+                    placeholder="Şifrenizi tekrar girin"
+                    required
+                    minlength="8"
+                >
+            </div>
+
+            <!-- Çocuk Bilgileri -->
+            <div class="form-group">
+                <div class="form-checkbox">
+                    <input type="checkbox" id="has_children" name="has_children">
+                    <label for="has_children" class="form-label" style="margin-bottom: 0;">👶 Çocuğum var</label>
+                </div>
+            </div>
+
+            <div class="form-group" id="children_count_group" style="display: none;">
+                <label for="children_count" class="form-label">👶 Çocuk Sayısı</label>
+                <select id="children_count" name="children_count" class="form-select">
+                    <option value="0">Çocuk sayısını seçin</option>
+                    <option value="1">1 Çocuk</option>
+                    <option value="2">2 Çocuk</option>
+                    <option value="3">3 Çocuk</option>
+                    <option value="4">4 Çocuk</option>
+                    <option value="5">5 Çocuk</option>
+                </select>
+            </div>
+
+            <div id="children_container" style="display: none;"></div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+                🚀 Kayıt Ol
+            </button>
+        </form>
+    </div>
+
+    <!-- Giriş Yap Kartı -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🔐 Zaten üye misin?</h2>
+            <p class="card-subtitle">Hemen giriş yap!</p>
+        </div>
+
+        <a href="{% url 'webapp:login' %}" class="btn btn-secondary btn-full">
+            🚪 Giriş Yap
+        </a>
+    </div>
+
+    <!-- Güvenlik Bilgisi -->
+    <div class="card" style="background: var(--gray-100);">
+        <div class="card-header">
+            <h2 class="card-title">🔐 Güvenlik</h2>
+        </div>
+        
+        <p style="color: var(--gray-700); font-size: 14px; line-height: 1.5;">
+            Bilgileriniz güvenli bir şekilde şifrelenir ve korunur. 
+            Telefon numaranız sadece giriş yapmak için kullanılır.
+        </p>
+        
+        <div class="text-center mt-2">
+            <a href="{% url 'webapp:privacy_policy' %}" style="color: var(--primary-red); text-decoration: none; font-size: 14px;">
+                📋 Gizlilik Politikası
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Telefon numarası formatlaması
+    const phoneInput = document.getElementById('phone_number');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            e.target.value = value;
+        });
+    }
+
+    // Şifre eşleşme kontrolü
+    const password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('password_confirm');
+    
+    function checkPasswordMatch() {
+        if (password.value !== passwordConfirm.value) {
+            passwordConfirm.setCustomValidity('Şifreler eşleşmiyor');
+        } else {
+            passwordConfirm.setCustomValidity('');
+        }
+    }
+
+    password.addEventListener('input', checkPasswordMatch);
+    passwordConfirm.addEventListener('input', checkPasswordMatch);
+
+    // Çocuk bilgileri toggle
+    const hasChildrenCheckbox = document.getElementById('has_children');
+    const childrenCountGroup = document.getElementById('children_count_group');
+    const childrenCountSelect = document.getElementById('children_count');
+    const childrenContainer = document.getElementById('children_container');
+
+    hasChildrenCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            childrenCountGroup.style.display = 'block';
+        } else {
+            childrenCountGroup.style.display = 'none';
+            childrenContainer.style.display = 'none';
+            childrenContainer.innerHTML = '';
+            childrenCountSelect.value = '0';
+        }
+    });
+
+    childrenCountSelect.addEventListener('change', function() {
+        const count = parseInt(this.value);
+        updateChildrenFields(count);
+    });
+
+    // Form submit validation
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        if (password.value !== passwordConfirm.value) {
+            e.preventDefault();
+            showMessage('Şifreler eşleşmiyor!', 'error');
+            return;
+        }
+        
+        // Debug: Form verilerini kontrol et
+        const formData = new FormData(this);
+        console.log('Form submit - tüm veriler:');
+        for (let [key, value] of formData.entries()) {
+            console.log(key + ': ' + value);
+        }
+        
+        // Çocuk alanlarını özellikle kontrol et
+        const hasChildren = document.getElementById('has_children').checked;
+        const childrenCount = document.getElementById('children_count').value;
+        console.log('hasChildren:', hasChildren);
+        console.log('childrenCount:', childrenCount);
+        
+        if (hasChildren && childrenCount > 0) {
+            let childrenFound = 0;
+            for (let i = 0; i < childrenCount; i++) {
+                const childGrade = document.getElementById(`child_${i}_grade`);
+                if (childGrade) {
+                    console.log(`child_${i}_grade:`, childGrade.value);
+                    if (childGrade.value) childrenFound++;
+                } else {
+                    console.error(`child_${i}_grade elementi bulunamadı!`);
+                }
+            }
+            
+            if (childrenFound === 0) {
+                e.preventDefault();
+                showMessage('Çocuk sınıf bilgilerini seçin!', 'error');
+                return;
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

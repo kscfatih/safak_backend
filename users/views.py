@@ -7,7 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from .serializers import (
     UserRegistrationSerializer, UserLoginSerializer, UserProfileSerializer,
-    UserUpdateSerializer, PhoneVerificationSerializer, ChildUpdateSerializer
+    UserUpdateSerializer, PhoneVerificationSerializer, ChildUpdateSerializer, ChildSerializer
 )
 from .models import CustomUser, Child
 
@@ -148,7 +148,7 @@ def delete_account(request):
 @permission_classes([IsAuthenticated])
 def get_children(request):
     children = request.user.children.all()
-    serializer = ChildUpdateSerializer(children, many=True)
+    serializer = ChildSerializer(children, many=True)
     return Response(serializer.data)
 
 @api_view(['POST'])

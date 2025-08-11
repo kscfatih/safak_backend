@@ -3,14 +3,14 @@ from .models import OpportunityProduct
 
 @admin.register(OpportunityProduct)
 class OpportunityProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'original_price', 'discounted_price', 'discount_percentage', 'is_active', 'created_at')
+    list_display = ( 'original_price', 'discounted_price', 'discount_percentage', 'is_active', 'created_at')
     list_filter = ('is_active', 'created_at')
-    search_fields = ('name', 'description')
+    search_fields = ('description',)
     ordering = ('-created_at',)
     
     fieldsets = (
         ('Temel Bilgiler', {
-            'fields': ('name', 'description', 'image')
+            'fields': ('description', 'image')
         }),
         ('Fiyat Bilgileri', {
             'fields': ('original_price', 'discounted_price')

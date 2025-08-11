@@ -1,0 +1,153 @@
+{% extends 'web/base.html' %}
+
+{% block title %}Fırsat Ürünleri - Safak{% endblock %}
+
+{% block header_title %}🛍️ Fırsat Ürünleri{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Başlık Kartı -->
+    <div class="card text-center" style="background: linear-gradient(135deg, var(--primary-red), var(--secondary-red)); color: var(--white);">
+        <div style="font-size: 48px; margin-bottom: 16px;">🛍️</div>
+        <h1 style="color: var(--white); margin-bottom: 8px;">Fırsat Ürünleri</h1>
+        <p style="color: rgba(255,255,255,0.9);">Özel indirimli ürünler burada!</p>
+    </div>
+
+    <!-- Ürün Sayısı -->
+    {% if products %}
+        <div class="card">
+            <div class="text-center">
+                <div style="font-size: 24px; color: var(--primary-red); font-weight: bold;">
+                    {{ products.paginator.count }}
+                </div>
+                <div style="font-size: 14px; color: var(--gray-500);">Toplam Fırsat Ürünü</div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Ürünler -->
+    {% if products %}
+        <div class="grid grid-2">
+            {% for product in products %}
+                <div class="product-card">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image">
+                    {% else %}
+                        <div class="product-image" style="display: flex; align-items: center; justify-content: center; background: var(--gray-200); color: var(--gray-500); font-size: 48px;">
+                            🛍️
+                        </div>
+                    {% endif %}
+                    
+                    <div class="product-content">
+                        <h3 class="product-title">{{ product.title }}</h3>
+                        
+                        {% if product.price %}
+                            <div class="product-price">{{ product.price }} TL</div>
+                        {% endif %}
+                        
+                        {% if product.description %}
+                            <p class="product-description">
+                                {% if product.description|length > 100 %}
+                                    {{ product.description|slice:":100" }}...
+                                {% else %}
+                                    {{ product.description }}
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                        
+                        <!-- Ürün Durumu -->
+                        <div class="mt-2">
+                            {% if product.is_active %}
+                                <span style="background: var(--success); color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                                    AKTİF
+                                </span>
+                            {% else %}
+                                <span style="background: var(--gray-500); color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                                    PASİF
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Sayfalama -->
+        {% if products.has_other_pages %}
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    {% if products.has_previous %}
+                        <a href="?page={{ products.previous_page_number }}" class="btn btn-secondary">
+                            ← Önceki
+                        </a>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                    
+                    <div style="color: var(--gray-700); font-weight: 500;">
+                        Sayfa {{ products.number }} / {{ products.paginator.num_pages }}
+                    </div>
+                    
+                    {% if products.has_next %}
+                        <a href="?page={{ products.next_page_number }}" class="btn btn-secondary">
+                            Sonraki →
+                        </a>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+    {% else %}
+        <!-- Boş Durum -->
+        <div class="card text-center">
+            <div style="font-size: 64px; margin-bottom: 16px; opacity: 0.5;">📦</div>
+            <h2 style="color: var(--gray-700); margin-bottom: 8px;">Henüz Ürün Yok</h2>
+            <p style="color: var(--gray-500); margin-bottom: 20px;">
+                Şu anda fırsat ürünü bulunmuyor. Yakında harika teklifler gelecek!
+            </p>
+            
+            <a href="{% url 'webapp:home' %}" class="btn btn-primary">
+                🏠 Ana Sayfaya Dön
+            </a>
+        </div>
+    {% endif %}
+
+    <!-- Bilgi Kartı -->
+    <div class="card" style="background: var(--light-red);">
+        <div class="card-header">
+            <h2 class="card-title">💡 Nasıl Alışveriş Yapılır?</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <p><strong>1.</strong> Beğendiğiniz ürünü seçin</p>
+            <p><strong>2.</strong> Mağazaya gidin</p>
+            <p><strong>3.</strong> Ana sayfadaki barkodunuzu gösterin</p>
+            <p><strong>4.</strong> İndirimli fiyattan satın alın</p>
+        </div>
+        
+        <div class="mt-2">
+            <a href="{% url 'webapp:home' %}" class="btn btn-primary btn-full">
+                🎫 Barkodumu Göster
+            </a>
+        </div>
+    </div>
+
+    <!-- İletişim -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📞 Sorularınız mı Var?</h2>
+        </div>
+        
+        <p style="color: var(--gray-700); line-height: 1.5; margin-bottom: 16px;">
+            Ürünler hakkında detaylı bilgi almak için mağaza ile iletişime geçebilirsiniz.
+        </p>
+        
+        <div style="background: var(--white); padding: 12px; border-radius: 8px; border: 1px solid var(--gray-200);">
+            <div style="font-weight: 600; color: var(--primary-red);">📍 Mağaza Adresi</div>
+            <div style="font-size: 14px; color: var(--gray-700);">Adres bilgisi buraya gelecek</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

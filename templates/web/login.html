@@ -1,0 +1,120 @@
+{% extends 'web/base.html' %}
+
+{% block title %}Giriş Yap - Safak{% endblock %}
+
+{% block header_title %}🔐 Giriş Yap{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Logo/Hoş Geldin Kartı -->
+    <div class="card text-center" style="background: linear-gradient(135deg, var(--primary-red), var(--secondary-red)); color: var(--white);">
+        <div style="font-size: 48px; margin-bottom: 16px;">🔥</div>
+        <h1 style="color: var(--white); margin-bottom: 8px;">Safak'a Hoş Geldin</h1>
+        <p style="color: rgba(255,255,255,0.9);">İndirim kuponun seni bekliyor!</p>
+    </div>
+
+    <!-- Giriş Formu -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Giriş Yap</h2>
+            <p class="card-subtitle">Hesabınıza giriş yapın</p>
+        </div>
+
+        <form method="post" class="form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="phone_number" class="form-label">📱 Telefon Numarası</label>
+                <input 
+                    type="tel" 
+                    id="phone_number" 
+                    name="phone_number" 
+                    class="form-input" 
+                    placeholder="5XXXXXXXXX"
+                    required
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">🔒 Şifre</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-input" 
+                    placeholder="Şifrenizi girin"
+                    required
+                    minlength="8"
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+                🚀 Giriş Yap
+            </button>
+        </form>
+    </div>
+
+    <!-- Kayıt Ol Kartı -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">👋 Yeni misin?</h2>
+            <p class="card-subtitle">Hemen kayıt ol, indirim kuponunu al!</p>
+        </div>
+
+        <a href="{% url 'webapp:register' %}" class="btn btn-secondary btn-full">
+            ✨ Kayıt Ol
+        </a>
+    </div>
+
+    <!-- Özellikler -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🎁 Neler Kazanacaksın?</h2>
+        </div>
+
+        <div class="grid">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--light-red); border-radius: 8px;">
+                <div style="font-size: 24px;">🎫</div>
+                <div>
+                    <div style="font-weight: 600; color: var(--dark-red);">Özel İndirim Kuponu</div>
+                    <div style="font-size: 14px; color: var(--gray-700);">Kişiye özel barkod</div>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--light-red); border-radius: 8px;">
+                <div style="font-size: 24px;">🛍️</div>
+                <div>
+                    <div style="font-weight: 600; color: var(--dark-red);">Fırsat Ürünleri</div>
+                    <div style="font-size: 14px; color: var(--gray-700);">Özel kampanyalar</div>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--light-red); border-radius: 8px;">
+                <div style="font-size: 24px;">📱</div>
+                <div>
+                    <div style="font-weight: 600; color: var(--dark-red);">Kolay Kullanım</div>
+                    <div style="font-size: 14px; color: var(--gray-700);">Mobil uyumlu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Telefon numarası formatlaması
+    const phoneInput = document.getElementById('phone_number');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            e.target.value = value;
+        });
+    }
+});
+</script>
+{% endblock %}

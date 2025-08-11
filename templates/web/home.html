@@ -1,0 +1,140 @@
+{% extends 'web/base.html' %}
+
+{% block title %}Ana Sayfa - Safak{% endblock %}
+
+{% block header_title %}🏠 Ana Sayfa{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Barkod Kartı -->
+    {% if user_barcode %}
+        <div class="card barcode-card">
+            <div class="card-header">
+                <h2 class="card-title">🎫 İndirim Kuponunuz</h2>
+                {% if active_campaign %}
+                    <p class="card-subtitle">{{ active_campaign.campaign_name }}</p>
+                {% endif %}
+            </div>
+            
+            <div class="barcode-display" data-barcode-code="{{ user_barcode.campaign_barcode.barcode_code }}">
+                <!-- JavaScript ile barkod oluşturulacak -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+            
+            {% if active_campaign %}
+                <div class="campaign-info">
+                    <div class="campaign-name">{{ active_campaign.campaign_name }}</div>
+                    <div class="campaign-desc">{{ active_campaign.description }}</div>
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">🎫 Barkod Yükleniyor...</h2>
+                <p class="card-subtitle">Lütfen bekleyin</p>
+            </div>
+            
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+            
+            <div class="text-center mt-2">
+                <a href="{% url 'webapp:home' %}" class="btn btn-primary">Yenile</a>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Hoş Geldin Kartı -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">👋 Hoş Geldin!</h2>
+            <p class="card-subtitle">{{ user.first_name }} {{ user.last_name }}</p>
+        </div>
+        
+        <div class="grid grid-2">
+            <div class="text-center">
+                <div style="font-size: 24px; color: var(--primary-red); font-weight: bold;">
+                    {% if user.has_children %}{{ user.children_count }}{% else %}0{% endif %}
+                </div>
+                <div style="font-size: 14px; color: var(--gray-500);">Çocuk Sayısı</div>
+            </div>
+            <div class="text-center">
+                <div style="font-size: 24px; color: var(--primary-red); font-weight: bold;">
+                    {{ user.phone_number }}
+                </div>
+                <div style="font-size: 14px; color: var(--gray-500);">Telefon</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hızlı Erişim -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">⚡ Hızlı Erişim</h2>
+        </div>
+        
+        <div class="grid grid-2">
+            <a href="{% url 'webapp:opportunities' %}" class="btn btn-primary">
+                🛍️ Fırsatlar
+            </a>
+            <a href="{% url 'webapp:profile' %}" class="btn btn-secondary">
+                👤 Profil
+            </a>
+        </div>
+    </div>
+
+    <!-- Kampanya Bilgisi -->
+    {% if active_campaign %}
+        <div class="card" style="background: linear-gradient(135deg, var(--light-red), var(--white));">
+            <div class="card-header">
+                <h2 class="card-title">🎉 {{ active_campaign.campaign_name }}</h2>
+                <p class="card-subtitle">Aktif Kampanya</p>
+            </div>
+            
+            <p style="color: var(--gray-700); line-height: 1.5;">
+                {{ active_campaign.description }}
+            </p>
+            
+            <div class="mt-2">
+                <span style="background: var(--primary-red); color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                    AKTİF
+                </span>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Kullanım Talimatları -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📋 Nasıl Kullanılır?</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <p><strong>1.</strong> Yukarıdaki barkodu mağazada gösterin</p>
+            <p><strong>2.</strong> Kasiyere okutun</p>
+            <p><strong>3.</strong> İndiriminizden faydalanın</p>
+        </div>
+        
+        <div class="mt-2">
+            <a href="{% url 'webapp:opportunities' %}" class="btn btn-primary btn-full">
+                🛍️ Fırsat Ürünlerini Gör
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Barkod oluştur
+    const barcodeContainer = document.querySelector('.barcode-display');
+    const barcodeCode = barcodeContainer?.getAttribute('data-barcode-code');
+    
+    if (barcodeContainer && barcodeCode) {
+        generateBarcode(barcodeCode, barcodeContainer);
+    }
+});
+</script>
+{% endblock %}

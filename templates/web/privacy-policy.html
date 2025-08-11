@@ -1,0 +1,307 @@
+{% extends 'web/base.html' %}
+
+{% block title %}Gizlilik Politikası - Şafak Win{% endblock %}
+
+{% block header_title %}🔐 Gizlilik Politikası{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Ana Başlık -->
+    <div class="card text-center" style="background: linear-gradient(135deg, var(--primary-red), var(--secondary-red)); color: var(--white);">
+        <div style="font-size: 48px; margin-bottom: 16px;">🔐</div>
+        <h1 style="color: var(--white); margin-bottom: 8px;">Gizlilik Politikası</h1>
+        <p style="color: rgba(255,255,255,0.9);">Şafak Win Uygulaması</p>
+        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Son Güncelleme: {{ current_date|date:"d.m.Y" }}</p>
+    </div>
+
+    <!-- Giriş -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📋 Gizlilik Politikamız</h2>
+        </div>
+        
+        <p style="color: var(--gray-700); line-height: 1.6;">
+            Şafak Win uygulaması olarak, kullanıcılarımızın gizliliğini korumak bizim için son derece önemlidir. 
+            Bu gizlilik politikası, kişisel bilgilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.
+        </p>
+    </div>
+
+    <!-- Toplanan Bilgiler -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📊 Topladığımız Bilgiler</h2>
+        </div>
+        
+        <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+            🔹 Kişisel Bilgiler
+        </h3>
+        <ul style="color: var(--gray-700); line-height: 1.6; margin-left: 20px; margin-bottom: 16px;">
+            <li>Ad ve soyad bilginiz</li>
+            <li>Telefon numaranız (giriş için kullanılır)</li>
+            <li>Çocuk sayısı ve sınıf bilgileri (varsa)</li>
+        </ul>
+
+        <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+            🔹 Otomatik Toplanan Bilgiler
+        </h3>
+        <ul style="color: var(--gray-700); line-height: 1.6; margin-left: 20px;">
+            <li>Uygulama kullanım bilgileri</li>
+            <li>Cihaz türü ve işletim sistemi</li>
+            <li>IP adresi (güvenlik amaçlı)</li>
+            <li>Giriş tarihi ve saatleri</li>
+        </ul>
+    </div>
+
+    <!-- Bilgilerin Kullanımı -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🎯 Bilgilerinizi Nasıl Kullanırız</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                🔹 Ana Kullanım Alanları
+            </h3>
+            <ul style="margin-left: 20px; margin-bottom: 16px;">
+                <li>Kişisel indirim kuponunuzu oluşturmak</li>
+                <li>Hesabınıza güvenli giriş sağlamak</li>
+                <li>Size özel kampanya teklifleri sunmak</li>
+                <li>Müşteri destek hizmeti vermek</li>
+                <li>Uygulama güvenliğini sağlamak</li>
+            </ul>
+
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                🔹 Çocuk Bilgileri
+            </h3>
+            <p>
+                Çocuk bilgileriniz (sınıf seviyesi) sadece size uygun kampanyalar sunmak için kullanılır. 
+                Bu bilgiler üçüncü taraflarla paylaşılmaz.
+            </p>
+        </div>
+    </div>
+
+    <!-- Bilgi Güvenliği -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🛡️ Bilgi Güvenliği</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                🔹 Güvenlik Önlemleri
+            </h3>
+            <ul style="margin-left: 20px; margin-bottom: 16px;">
+                <li><strong>Şifreleme:</strong> Tüm veriler şifreli olarak saklanır</li>
+                <li><strong>Güvenli Sunucular:</strong> Verileriniz güvenli sunucularda barındırılır</li>
+                <li><strong>Erişim Kontrolü:</strong> Sadece yetkili personel erişim sağlayabilir</li>
+                <li><strong>Düzenli Yedekleme:</strong> Verileriniz düzenli olarak yedeklenir</li>
+                <li><strong>Güvenlik Güncellemeleri:</strong> Sistem sürekli güncellenir</li>
+            </ul>
+
+            <div style="background: var(--success); color: var(--white); padding: 12px; border-radius: 8px; margin-top: 16px;">
+                <strong>🔒 Güvence:</strong> Şifreleriniz hiçbir zaman açık metin olarak saklanmaz!
+            </div>
+        </div>
+    </div>
+
+    <!-- Üçüncü Taraflar -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🤝 Üçüncü Taraf Paylaşımı</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                ❌ Paylaşmadığımız Bilgiler
+            </h3>
+            <ul style="margin-left: 20px; margin-bottom: 16px;">
+                <li>Kişisel bilgilerinizi üçüncü taraflarla <strong>satmıyoruz</strong></li>
+                <li>Telefon numaranızı pazarlama amaçlı <strong>paylaşmıyoruz</strong></li>
+                <li>Çocuk bilgilerinizi hiçbir şekilde <strong>vermiyoruz</strong></li>
+            </ul>
+
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                ✅ İstisnai Durumlar
+            </h3>
+            <p>
+                Bilgileriniz yalnızca yasal zorunluluklar (mahkeme kararı, resmi soruşturma) 
+                durumunda ilgili otoritelerle paylaşılabilir.
+            </p>
+        </div>
+    </div>
+
+    <!-- Çerezler -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🍪 Çerezler ve Takip</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                🔹 Kullandığımız Çerezler
+            </h3>
+            <ul style="margin-left: 20px; margin-bottom: 16px;">
+                <li><strong>Oturum Çerezleri:</strong> Giriş durumunuzu korur</li>
+                <li><strong>Güvenlik Çerezleri:</strong> Hesap güvenliğinizi sağlar</li>
+                <li><strong>Tercih Çerezleri:</strong> Uygulama ayarlarınızı hatırlar</li>
+            </ul>
+
+            <p>
+                Çerezleri tarayıcınızdan silebilir veya devre dışı bırakabilirsiniz, 
+                ancak bu durumda bazı özellikler çalışmayabilir.
+            </p>
+        </div>
+    </div>
+
+    <!-- Haklarınız -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">⚖️ Haklarınız</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <h3 style="color: var(--primary-red); font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                🔹 KVKK Kapsamında Haklarınız
+            </h3>
+            <ul style="margin-left: 20px; margin-bottom: 16px;">
+                <li><strong>Bilgi Alma Hakkı:</strong> Hangi verilerinizin işlendiğini öğrenebilirsiniz</li>
+                <li><strong>Düzeltme Hakkı:</strong> Yanlış bilgilerinizi düzelttirebilirsiniz</li>
+                <li><strong>Silme Hakkı:</strong> Verilerinizin silinmesini talep edebilirsiniz</li>
+                <li><strong>İtiraz Hakkı:</strong> Veri işlemeye itiraz edebilirsiniz</li>
+                <li><strong>Taşınabilirlik Hakkı:</strong> Verilerinizi başka platforma aktarabilirsiniz</li>
+            </ul>
+
+            <div style="background: var(--light-red); padding: 12px; border-radius: 8px; border-left: 4px solid var(--primary-red);">
+                <strong>📞 İletişim:</strong> Haklarınızı kullanmak için bizimle iletişime geçin.
+            </div>
+        </div>
+    </div>
+
+    <!-- Veri Saklama -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📅 Veri Saklama Süresi</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <ul style="margin-left: 20px;">
+                <li><strong>Aktif Hesaplar:</strong> Hesabınız aktif olduğu sürece</li>
+                <li><strong>Pasif Hesaplar:</strong> 2 yıl boyunca erişim sağlanmadıysa silinir</li>
+                <li><strong>Silme Talebi:</strong> Talebiniz üzerine 30 gün içinde silinir</li>
+                <li><strong>Yasal Gereklilikler:</strong> Yasal zorunluluklar süresince</li>
+                <li><strong>Log Kayıtları:</strong> Güvenlik amaçlı 1 yıl saklanır</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Çocukların Gizliliği -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">👶 Çocukların Gizliliği</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <p style="margin-bottom: 16px;">
+                Uygulamamız 18 yaş altındaki kullanıcılardan doğrudan kişisel bilgi toplamaz. 
+                Çocuk bilgileri sadece ebeveynler tarafından sağlanır ve sadece kampanya önerilerinde kullanılır.
+            </p>
+
+            <div style="background: var(--warning); color: var(--white); padding: 12px; border-radius: 8px;">
+                <strong>⚠️ Önemli:</strong> 18 yaş altındaysanız, uygulamayı kullanmadan önce ebeveyn izni alın.
+            </div>
+        </div>
+    </div>
+
+    <!-- Politika Değişiklikleri -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📝 Politika Güncellemeleri</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <p style="margin-bottom: 16px;">
+                Bu gizlilik politikası zaman zaman güncellenebilir. Önemli değişiklikler olduğunda:
+            </p>
+
+            <ul style="margin-left: 20px; margin-bottom: 16px;">
+                <li>Uygulama içinde bildirim gönderilir</li>
+                <li>Bu sayfada güncelleme tarihi değiştirilir</li>
+                <li>Önemli değişiklikler için onayınız alınır</li>
+            </ul>
+
+            <p>
+                Uygulamayı kullanmaya devam ederek güncel politikayı kabul etmiş sayılırsınız.
+            </p>
+        </div>
+    </div>
+
+    <!-- İletişim -->
+    <div class="card" style="background: linear-gradient(135deg, var(--light-red), var(--white));">
+        <div class="card-header">
+            <h2 class="card-title">📞 İletişim</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <p style="margin-bottom: 16px;">
+                Gizlilik politikamız hakkında sorularınız varsa veya haklarınızı kullanmak istiyorsanız 
+                bizimle iletişime geçebilirsiniz:
+            </p>
+
+            <div class="grid">
+                <div style="background: var(--white); padding: 16px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                    <div style="font-weight: 600; color: var(--primary-red); margin-bottom: 8px;">📧 E-posta</div>
+                    <div style="font-size: 14px;">privacy@safakwin.com</div>
+                </div>
+
+                <div style="background: var(--white); padding: 16px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                    <div style="font-weight: 600; color: var(--primary-red); margin-bottom: 8px;">📱 Uygulama</div>
+                    <div style="font-size: 14px;">Profil → Destek</div>
+                </div>
+
+                <div style="background: var(--white); padding: 16px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                    <div style="font-weight: 600; color: var(--primary-red); margin-bottom: 8px;">⏰ Yanıt Süresi</div>
+                    <div style="font-size: 14px;">48 saat içinde</div>
+                </div>
+
+                <div style="background: var(--white); padding: 16px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                    <div style="font-weight: 600; color: var(--primary-red); margin-bottom: 8px;">🏢 Şirket</div>
+                    <div style="font-size: 14px;">Şafak Win Ltd.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ana Sayfaya Dön -->
+    <div class="card text-center">
+        <a href="{% url 'webapp:home' %}" class="btn btn-primary btn-full">
+            🏠 Ana Sayfaya Dön
+        </a>
+    </div>
+</div>
+
+<style>
+/* Özel stiller */
+h3 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+ul {
+    margin-bottom: 16px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

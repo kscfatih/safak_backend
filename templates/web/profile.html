@@ -1,0 +1,185 @@
+{% extends 'web/base.html' %}
+
+{% block title %}Profil - Safak{% endblock %}
+
+{% block header_title %}👤 Profil{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Profil Kartı -->
+    <div class="card text-center" style="background: linear-gradient(135deg, var(--primary-red), var(--secondary-red)); color: var(--white);">
+        <div style="font-size: 64px; margin-bottom: 16px;">👤</div>
+        <h1 style="color: var(--white); margin-bottom: 8px;">{{ user.first_name }} {{ user.last_name }}</h1>
+        <p style="color: rgba(255,255,255,0.9);">{{ user.phone_number }}</p>
+    </div>
+
+    <!-- Kişisel Bilgiler -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📋 Kişisel Bilgiler</h2>
+        </div>
+        
+        <div class="grid">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--gray-100); border-radius: 8px;">
+                <div>
+                    <div style="font-weight: 600; color: var(--gray-900);">Ad Soyad</div>
+                    <div style="font-size: 14px; color: var(--gray-500);">İsim bilginiz</div>
+                </div>
+                <div style="font-weight: 600; color: var(--primary-red);">
+                    {{ user.first_name }} {{ user.last_name }}
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--gray-100); border-radius: 8px;">
+                <div>
+                    <div style="font-weight: 600; color: var(--gray-900);">Telefon</div>
+                    <div style="font-size: 14px; color: var(--gray-500);">Giriş numaranız</div>
+                </div>
+                <div style="font-weight: 600; color: var(--primary-red);">
+                    {{ user.phone_number }}
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--gray-100); border-radius: 8px;">
+                <div>
+                    <div style="font-weight: 600; color: var(--gray-900);">Kayıt Tarihi</div>
+                    <div style="font-size: 14px; color: var(--gray-500);">Üyelik başlangıcı</div>
+                </div>
+                <div style="font-weight: 600; color: var(--primary-red);">
+                    {{ user.date_joined|date:"d.m.Y" }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Çocuk Bilgileri -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">👶 Çocuk Bilgileri</h2>
+        </div>
+        
+        {% if user.has_children and children %}
+            <div style="text-center; margin-bottom: 16px;">
+                <div style="font-size: 32px; color: var(--primary-red); font-weight: bold;">
+                    {{ user.children_count }}
+                </div>
+                <div style="font-size: 14px; color: var(--gray-500);">Toplam Çocuk</div>
+            </div>
+
+            <div class="grid">
+                {% for child in children %}
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--light-red); border-radius: 8px;">
+                        <div style="font-size: 24px;">🎓</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--dark-red);">Çocuk {{ forloop.counter }}</div>
+                            <div style="font-size: 14px; color: var(--gray-700);">{{ child.get_grade_display }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">👶</div>
+                <p style="color: var(--gray-500);">Çocuk bilgisi bulunmuyor</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- İstatistikler -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📊 İstatistikler</h2>
+        </div>
+        
+        <div class="grid grid-2">
+            <div class="text-center">
+                <div style="font-size: 24px; color: var(--primary-red); font-weight: bold;">
+                    {{ user.date_joined|timesince }}
+                </div>
+                <div style="font-size: 14px; color: var(--gray-500);">Üyelik Süresi</div>
+            </div>
+            <div class="text-center">
+                <div style="font-size: 24px; color: var(--primary-red); font-weight: bold;">
+                    {% if user.has_children %}{{ user.children_count }}{% else %}0{% endif %}
+                </div>
+                <div style="font-size: 14px; color: var(--gray-500);">Çocuk Sayısı</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hızlı İşlemler -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">⚡ Hızlı İşlemler</h2>
+        </div>
+        
+        <div class="grid">
+            <a href="{% url 'webapp:home' %}" class="btn btn-primary">
+                🎫 Barkodumu Göster
+            </a>
+            <a href="{% url 'webapp:opportunities' %}" class="btn btn-secondary">
+                🛍️ Fırsat Ürünleri
+            </a>
+        </div>
+    </div>
+
+    <!-- Hesap İşlemleri -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">⚙️ Hesap İşlemleri</h2>
+        </div>
+        
+        <div class="grid">
+            <button class="btn btn-secondary" onclick="showMessage('Profil düzenleme yakında aktif olacak!', 'info')">
+                ✏️ Profili Düzenle
+            </button>
+            <button class="btn btn-secondary" onclick="showMessage('Şifre değiştirme yakında aktif olacak!', 'info')">
+                🔒 Şifre Değiştir
+            </button>
+        </div>
+        
+        <div class="mt-2">
+            <a href="{% url 'webapp:logout' %}" class="btn btn-primary btn-full" style="background: var(--error);">
+                🚪 Çıkış Yap
+            </a>
+        </div>
+    </div>
+
+    <!-- Yardım -->
+    <div class="card" style="background: var(--light-red);">
+        <div class="card-header">
+            <h2 class="card-title">💡 Yardım</h2>
+        </div>
+        
+        <div style="color: var(--gray-700); line-height: 1.6;">
+            <p><strong>Barkod nasıl kullanılır?</strong></p>
+            <p>Ana sayfadaki barkodunuzu mağazada göstererek indirimden faydalanabilirsiniz.</p>
+            
+            <p><strong>Çocuk bilgilerimi güncelleyebilir miyim?</strong></p>
+            <p>Şu anda profil düzenleme özelliği geliştirilmekte. Yakında aktif olacak!</p>
+        </div>
+        
+        <div class="mt-2">
+            <button class="btn btn-primary btn-full" onclick="showMessage('Destek ekibimiz en kısa sürede sizinle iletişime geçecek!', 'success')">
+                📞 Destek Al
+            </button>
+        </div>
+    </div>
+
+    <!-- Güvenlik -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🔐 Güvenlik</h2>
+        </div>
+        
+        <p style="color: var(--gray-700); font-size: 14px; line-height: 1.5;">
+            Hesabınızın güvenliği için düzenli olarak şifrenizi değiştirin ve 
+            kişisel bilgilerinizi kimseyle paylaşmayın.
+        </p>
+        
+        <div style="background: var(--success); color: var(--white); padding: 8px 12px; border-radius: 6px; font-size: 14px; margin-top: 12px;">
+            ✅ Hesabınız güvenli
+        </div>
+    </div>
+</div>
+{% endblock %}

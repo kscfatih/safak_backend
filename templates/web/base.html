@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dc2626">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Safak">
+    
+    <title>{% block title %}Safak{% endblock %}</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'web/css/mobile.css' %}">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{% static 'web/manifest.json' %}">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="{% static 'web/images/icon-192.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'web/images/icon-32.png' %}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>{% block header_title %}🔥 Safak{% endblock %}</h1>
+            {% if user.is_authenticated %}
+                <div class="user-info">
+                    Hoş geldin, {{ user.first_name }} {{ user.last_name }}
+                </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="messages">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }} fade-in">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Bottom Navigation -->
+    {% if user.is_authenticated %}
+        <nav class="bottom-nav">
+            <div class="nav-items">
+                <a href="{% url 'webapp:home' %}" class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    <div class="nav-icon">🏠</div>
+                    <span>Ana Sayfa</span>
+                </a>
+                <a href="{% url 'webapp:opportunities' %}" class="nav-item {% if request.resolver_match.url_name == 'opportunities' %}active{% endif %}">
+                    <div class="nav-icon">🛍️</div>
+                    <span>Fırsatlar</span>
+                </a>
+                <a href="{% url 'webapp:profile' %}" class="nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+                    <div class="nav-icon">👤</div>
+                    <span>Profil</span>
+                </a>
+                <a href="{% url 'webapp:privacy_policy' %}" class="nav-item {% if request.resolver_match.url_name == 'privacy_policy' %}active{% endif %}">
+                    <div class="nav-icon">🔐</div>
+                    <span>Gizlilik</span>
+                </a>
+                <a href="{% url 'webapp:logout' %}" class="nav-item">
+                    <div class="nav-icon">🚪</div>
+                    <span>Çıkış</span>
+                </a>
+            </div>
+        </nav>
+    {% endif %}
+
+    <!-- JavaScript -->
+    <script src="{% static 'web/js/app.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
